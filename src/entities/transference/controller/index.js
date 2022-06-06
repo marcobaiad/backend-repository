@@ -35,17 +35,11 @@ export const createTransferenceController = async (
 ) => {
   readFile(
     (data) => {
-      const { amount, fromAccountId, toAccountId } = newTransference;
+      const { amount, fromAccountId, toAccountId, userId } = newTransference;
       const getAccountsHandler = (accounts) => {
         if (!accounts) return createTransference(false, "Account not found");
         const fromAccount = accounts.find(({ id }) => id === fromAccountId);
         const toAccount = accounts.find(({ id }) => id === toAccountId);
-        console.log(
-          "file: index.js ~ line 36 ~ getAccountsHandler ~ fromAccount",
-          fromAccount,
-          "toAccount",
-          toAccount
-        );
         if (!fromAccount)
           return createTransference(false, "fromAccountId not found");
         if (!toAccount)
@@ -57,6 +51,7 @@ export const createTransferenceController = async (
         const timestamp = Date.now();
         const createdTransference = {
           id,
+          userId,
           amount: Number(amount),
           fromAccountId,
           toAccountId,

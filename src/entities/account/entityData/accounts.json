@@ -4,21 +4,21 @@
     "userId": "6b547652-a7ba-47e1-8edb-33ab95c6843d",
     "type": "Cuenta Corriente",
     "number": 1654462931406,
-    "amount": 16500
+    "amount": 15500
   },
   "6f6a03ff-32b6-4a82-a76c-37ae3214b40d": {
     "id": "6f6a03ff-32b6-4a82-a76c-37ae3214b40d",
     "userId": "6b547652-a7ba-47e1-8edb-33ab95c6843d",
     "type": "Cuenta Corriente",
     "number": 1654462931405,
-    "amount": 13000
+    "amount": 14000
   },
   "60aca93e-86bd-4909-96a0-178ac382fb0c": {
     "id": "60aca93e-86bd-4909-96a0-178ac382fb0c",
     "userId": "6b547652-a7ba-47e1-8edb-33ab95c6843d",
     "type": "Cuenta Corriente",
     "number": 1654462931404,
-    "amount": 12000
+    "amount": 10000
   },
   "6ad12338-3731-4cbe-9152-3377e68832bc": {
     "id": "6ad12338-3731-4cbe-9152-3377e68832bc",
@@ -39,7 +39,7 @@
     "userId": "6b547652-a7ba-47e1-8edb-33ab95c6843d",
     "type": "Caja de Ahorro",
     "number": 1654462931400,
-    "amount": 4000
+    "amount": 6000
   },
   "6088e4e5-9284-4021-9da9-65d424dc5f59": {
     "id": "6088e4e5-9284-4021-9da9-65d424dc5f59",

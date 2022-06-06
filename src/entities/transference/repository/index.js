@@ -4,24 +4,41 @@ import {
 } from "../controller/index.js";
 
 export const getTransferences = (req, res) => {
+  const { userId } = req.params;
   const { fromAccountId } = req.query;
-  if (!fromAccountId)
-    return res
-      .status(406)
-      .send({ status: "error", error_msg: "Param fromAccountId is required" });
 
   try {
-    const transferencesHandler = (transferences) => {
-      const transferencesExist = transferences.length;
-      const response = transferencesExist ? transferences : [];
-      const message = transferencesExist
-        ? "Get accounts successfully"
-        : "Not Found";
-      res
-        .status(transferences ? 200 : 404)
-        .send({ status: transferences ? "OK" : "error", message, response });
-    };
-    getTransferencesController(transferencesHandler, { fromAccountId });
+    if (userId) {
+      const transferencesHandler = (transferences) => {
+        const transferencesExist = transferences.length;
+        const response = transferencesExist ? transferences : [];
+        const message = transferencesExist
+          ? "Get accounts successfully"
+          : "Not Found";
+        return res
+          .status(transferences ? 200 : 404)
+          .send({ status: transferences ? "OK" : "error", message, response });
+      };
+      getTransferencesController(transferencesHandler, { userId });
+    } else {
+      if (!fromAccountId)
+        return res.status(406).send({
+          status: "error",
+          error_msg: "Param fromAccountId is required",
+        });
+
+      const transferencesHandler = (transferences) => {
+        const transferencesExist = transferences.length;
+        const response = transferencesExist ? transferences : [];
+        const message = transferencesExist
+          ? "Get accounts successfully"
+          : "Not Found";
+        res
+          .status(transferences ? 200 : 404)
+          .send({ status: transferences ? "OK" : "error", message, response });
+      };
+      getTransferencesController(transferencesHandler, { fromAccountId });
+    }
   } catch (error) {
     res.status(500).send({
       status: "error",
@@ -31,14 +48,8 @@ export const getTransferences = (req, res) => {
 };
 
 export const createTransference = (req, res) => {
-  const { amount, fromAccountId, toAccountId } = req.body;
-  console.log(
-    "file: index.js ~ line 35 ~ createTransference ~ amount, fromAccountId, toAccountId",
-    amount,
-    fromAccountId,
-    toAccountId
-  );
-  if (!amount || !fromAccountId || !toAccountId)
+  const { amount, fromAccountId, toAccountId, userId } = req.body;
+  if (!amount || !fromAccountId || !toAccountId || !userId)
     return res.status(406).send({
       status: "error",
       error_msg: "amount, fromAccountId and toAccountId are required",
